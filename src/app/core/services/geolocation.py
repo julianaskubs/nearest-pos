@@ -76,8 +76,8 @@ class GeolocationService:
                 })
 
             geo_json_obj.update(features=features)
-
             return geo_json_obj
+
         except Exception as e:
             print(e)
             return None
@@ -95,8 +95,8 @@ class GeolocationService:
             partners_point = nearest_points(point, partners_multipoint)
 
             partner_data = partners_gdf.loc[partners_gdf["geometry"] == partners_point[1]]
-
             return json.loads(partner_data.to_json())
+
         except Exception as e:
             print(e)
             return None
@@ -134,5 +134,4 @@ class GeolocationService:
             features)),
             None
         ))
-        geo_json['features'] = features
         return geo_json
