@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from shapely.geometry import shape, Polygon
 
-class PartnerValidation:
+class PartnerValidator(object):
 
     def __init__(self, payload):
         self.payload = payload
 
-    def validate_payload(self):
+    def validate(self):
         if not self.payload:
             return (False, "An empty payload is not valid.")
         return self.validate_id()
@@ -67,7 +67,7 @@ class PartnerValidation:
 
         # validate multipolygon field
         if not self.validate_multipolygon():
-            return (False, "The 'coordinates' field of 'coverageArea' is invalid. Please, take a look.")
+            return (False, "The 'coordinates' field of 'coverageArea' is invalid. Take a look.")
 
         return self.validate_address_point()
 
@@ -99,4 +99,4 @@ class PartnerValidation:
         if not self.validate_point():
             return (False, "The 'coordinates' field of 'address' is invalid. Please, take a look.")
 
-        return (True, 'ok')
+        return (True, "ok")
